@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>مملكة العطور</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="عطور رجالية ونسائية ومختلطة من مملكة العطور متجر موثوق يوفر أفضل العطور الأصلية.">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+    body { 
+      font-family: 'Cairo', sans-serif; 
+      background-color: #f8fafc;
+    }
+  </style>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="text-gray-800">
+  
+  <div class="flex flex-col min-h-screen">
+    <header class="bg-gradient-to-l from-yellow-500 to-yellow-300 text-gray-800 shadow-lg sticky top-0 z-50">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+        <!-- Logo/Brand -->
+        <a href="#/" class="flex items-center gap-3">
+          <i class="fa-solid fa-crown text-2xl text-white"></i>
+          <h1 class="text-xl font-bold text-white">مملكة العطور</h1>
+        </a>
+    
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-6 text-sm lg:text-base">
+          <a href="#/products/all" class="nav-link text-white hover:text-yellow-100 transition-colors">جميع العطور</a>
+          <a href="#/products/men" class="nav-link text-white hover:text-yellow-100 transition-colors">رجالي</a>
+          <a href="#/products/women" class="nav-link text-white hover:text-yellow-100 transition-colors">نسائي</a>
+          <a href="#/products/unisex" class="nav-link text-white hover:text-yellow-100 transition-colors">مختلط</a>
+        </nav>
+    
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button id="menu-button" aria-label="Toggle menu" class="text-white text-2xl p-2 focus:outline-none focus:ring-2 focus:ring-white rounded">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-yellow-400 border-t border-yellow-500">
+        <nav class="flex flex-col">
+          <a href="#/products/all"   class="nav-link text-white text-center py-3 px-4 hover:bg-yellow-500 transition-colors">جميع العطور</a>
+          <a href="#/products/men"    class="nav-link text-white text-center py-3 px-4 hover:bg-yellow-500 transition-colors border-t border-yellow-500/50">رجالي</a>
+          <a href="#/products/women"  class="nav-link text-white text-center py-3 px-4 hover:bg-yellow-500 transition-colors border-t border-yellow-500/50">نسائي</a>
+          <a href="#/products/unisex" class="nav-link text-white text-center py-3 px-4 hover:bg-yellow-500 transition-colors border-t border-yellow-500/50">مختلط</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="app-root" class="flex-grow">
+      <!-- App content is rendered here by JavaScript -->
+    </main>
+
+    <footer class="bg-yellow-600 text-white text-center py-6 mt-12">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-center gap-6 mb-4">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-2xl hover:text-yellow-300 transition-colors">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-2xl hover:text-yellow-300 transition-colors">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="text-2xl hover:text-yellow-300 transition-colors">
+            <i class="fab fa-tiktok"></i>
+          </a>
+          <a href="https://wa.me/221774423572" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="text-2xl hover:text-yellow-300 transition-colors">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+        </div>
+        <p>&copy; <span id="current-year"></span> مملكة العطور - جميع الحقوق محفوظة</p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (function() {
+      // --- DATA STORE ---
+      const products = [
+        { id: 1, name: 'Jean Paul Gaultier Le Beau', category: 'men', img: "C:\Users\sdmed\OneDrive\Images\Photo\IMG-20251011-WA0013.jpg" , price: 18000, available: true, badge: 'الأكثر مبيعاً' },
+        { id: 2, name: 'Dior Sauvage', category: 'men', img: 'https://i.imgur.com/W2d2fD0.png', price: 22000, available: true },
+        { id: 3, name: 'La Nuit de L\'Homme', category: 'men', img: 'https://i.imgur.com/gK7sVjG.png', price: 17500, available: false },
+        { id: 4, name: 'Acqua di Giò', category: 'men', img: 'https://i.imgur.com/rLz8i4I.png', price: 16000, available: true },
+        { id: 5, name: 'Tom Ford Noir', category: 'men', img: 'https://i.imgur.com/2Xy1gS0.png', price: 25000, available: true },
+        { id: 6, name: 'Chanel Coco Mademoiselle', category: 'women', img: 'https://i.imgur.com/Y3v1g7K.png', price: 23000, available: true, badge: 'جديد' },
+        { id: 7, name: 'Black Opium', category: 'women', img: 'https://i.imgur.com/5O9nQ8h.png', price: 19000, available: true },
+        { id: 8, name: 'Lancôme La Vie Est Belle', category: 'women', img: 'https://i.imgur.com/J3t8T6A.png', price: 21000, available: true },
+        { id: 9, name: 'Light Blue', category: 'women', img: 'https://i.imgur.com/xV6jB3Z.png', price: 15000, available: false },
+        { id: 10, name: 'My Way', category: 'women', img: 'https://i.imgur.com/c6f6D1G.png', price: 20000, available: true },
+        { id: 11, name: 'Creed Aventus', category: 'unisex', img: 'https://i.imgur.com/i9R3t4F.png', price: 35000, available: true, badge: 'فاخر' },
+        { id: 12, name: 'Baccarat Rouge 540', category: 'unisex', img: 'https://i.imgur.com/1B2t7eF.png', price: 45000, available: true },
+        { id: 13, name: 'Oud Wood', category: 'unisex', img: 'https://i.imgur.com/p8g7q4J.png', price: 38000, available: false },
+        { id: 14, name: 'By the Fireplace', category: 'unisex', img: 'https://i.imgur.com/e2o8h9R.png', price: 18000, available: true },
+        { id: 15, name: 'CK One', category: 'unisex', img: 'https://i.imgur.com/gT7h4fL.png', price: 9000, available: true },
+        { id: 16, name: 'Hawas - Rasasi', category: 'men', img: 'https://i.imgur.com/1S9R5zT.png', price: 12000, available: true },
+        { id: 17, name: 'Fakhar Lattafa White', category: 'women', img: 'https://i.imgur.com/4Ym2C4t.png', price: 8000, available: true },
+        { id: 18, name: 'Confidential', category: 'unisex', img: 'https://i.imgur.com/9K6E1fQ.png', price: 11000, available: true },
+        { id: 19, name: 'Qaed Al Fursan', category: 'unisex', img: 'https://i.imgur.com/mJ5c7bT.png', price: 7500, available: true },
+        { id: 20, name: 'Asad', category: 'men', img: 'https://i.imgur.com/7H4p2Tj.png', price: 8500, available: false, badge: 'نفذت الكمية'},
+      ];
+
+      // --- DOM Elements ---
+      const mainContent = document.getElementById('app-root');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuButton = document.getElementById('menu-button');
+      const menuIcon = menuButton.querySelector('i');
+
+      // --- TEMPLATES ---
+      const homePageTemplate = `
+        <section class="bg-gradient-to-l from-yellow-100 to-white py-20 text-center">
+          <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-4 text-yellow-700">أهلاً بكم في مملكة العطور</h2>
+            <p class="text-lg text-gray-700 max-w-2xl mx-auto">نوفر لكم أجود أنواع العطور الأصلية بأسعار مميزة وتوصيل سريع لجميع المناطق.</p>
+          </div>
+        </section>
+        <section class="py-16">
+          <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold mb-10 text-center text-yellow-700">الفئات الرئيسية</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+              <a href="#/products/men" class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition-all duration-300 flex flex-col items-center border-2 border-transparent hover:border-blue-400 w-full transform hover:-translate-y-1">
+                <i class="fas fa-mars text-5xl text-blue-500 mb-4"></i><span class="text-xl font-bold text-gray-800">عطور رجالية</span>
+              </a>
+              <a href="#/products/women" class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition-all duration-300 flex flex-col items-center border-2 border-transparent hover:border-pink-400 w-full transform hover:-translate-y-1">
+                <i class="fas fa-venus text-5xl text-pink-500 mb-4"></i><span class="text-xl font-bold text-gray-800">عطور نسائية</span>
+              </a>
+              <a href="#/products/unisex" class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition-all duration-300 flex flex-col items-center border-2 border-transparent hover:border-purple-400 w-full transform hover:-translate-y-1">
+                <i class="fas fa-venus-mars text-5xl text-purple-500 mb-4"></i><span class="text-xl font-bold text-gray-800">عطور مختلطة</span>
+              </a>
+              <a href="#/products/all" class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition-all duration-300 flex flex-col items-center border-2 border-transparent hover:border-yellow-400 w-full transform hover:-translate-y-1">
+                <i class="fas fa-th-large text-5xl text-yellow-500 mb-4"></i><span class="text-xl font-bold text-gray-800">جميع العطور</span>
+              </a>
+            </div>
+          </div>
+        </section>
+        <section class="bg-white py-16">
+          <div class="container mx-auto px-4 text-center">
+            <h3 class="text-3xl font-bold mb-4 text-yellow-700">نبذة عن المتجر</h3>
+            <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-8">مملكة العطور متجر موثوق يوفر لعملائه أفضل العطور العالمية الأصلية مع ضمان الجودة وخدمة عملاء مميزة.</p>
+            <div class="flex justify-center gap-12 text-yellow-600 text-5xl">
+              <i class="fas fa-shield-alt"></i><i class="fas fa-truck-fast"></i><i class="fas fa-certificate"></i>
+            </div>
+          </div>
+        </section>
+      `;
+
+      const productsPageTemplate = (title) => `
+        <div class="container mx-auto px-4 py-8">
+          <div class="mb-8 text-center">
+            <h2 class="text-3xl font-bold text-yellow-700">${title}</h2>
+          </div>
+          <div class="mb-8 max-w-lg mx-auto">
+            <div class="relative">
+              <input type="text" id="search-input" placeholder="ابحث عن عطر..." class="w-full px-4 py-3 pr-10 border-2 border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition">
+              <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                <i class="fas fa-search text-gray-400"></i>
+              </div>
+            </div>
+          </div>
+          <div id="products-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6"></div>
+          <div id="no-results" class="text-center py-16 hidden">
+            <p class="text-xl text-gray-500">لا توجد منتجات تطابق بحثك.</p>
+          </div>
+        </div>
+      `;
+
+      const productCardTemplate = (product) => `
+        <div class="bg-white p-4 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 flex flex-col justify-between relative overflow-hidden h-full">
+          ${product.badge ? `<span class="absolute top-2 start-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full font-bold z-10">${product.badge}</span>` : ''}
+          <div class="flex-shrink-0 text-center">
+            <img src="${product.img}" alt="${product.name}" width="160" height="160" class="mx-auto h-40 object-contain mb-3 rounded-lg">
+          </div>
+          <div class="flex-grow flex flex-col text-center">
+            <h3 class="font-bold text-md text-gray-800 mb-2 min-h-[40px]">${product.name}</h3>
+            <div class="mb-3 text-sm">
+              ${product.available ? '<span class="text-green-600 font-semibold">متوفر</span>' : '<span class="text-red-600 font-semibold">غير متوفر</span>'}
+            </div>
+            <p class="font-bold text-yellow-600 text-lg mb-4">${product.price} أوقية</p>
+          </div>
+          <button data-product-name="${product.name}" ${!product.available ? 'disabled' : ''} class="order-btn w-full bg-yellow-400 text-gray-900 font-bold py-2 px-4 rounded-lg hover:bg-yellow-500 transition-colors duration-300 disabled:bg-gray-300 disabled:cursor-not-allowed flex items-center justify-center gap-2">
+            <i class="fab fa-whatsapp text-lg"></i>
+            <span>اطلب الآن</span>
+          </button>
+        </div>
+      `;
+
+      // --- RENDER FUNCTIONS ---
+      const renderHomePage = () => {
+        mainContent.innerHTML = homePageTemplate;
+      };
+
+      const renderProductsPage = (category) => {
+        const categoryTitles = {
+          men: 'عطور رجالية', women: 'عطور نسائية', unisex: 'عطور مختلطة', all: 'جميع العطور'
+        };
+        const title = categoryTitles[category] || 'جميع العطور';
+        mainContent.innerHTML = productsPageTemplate(title);
+
+        const grid = document.getElementById('products-grid');
+        const noResults = document.getElementById('no-results');
+        const searchInput = document.getElementById('search-input');
+        
+        let currentSearchTerm = '';
+
+        const filterAndRender = () => {
+          const term = currentSearchTerm.toLowerCase();
+          const filtered = products.filter(p => {
+            const matchesCategory = category === 'all' || p.category === category;
+            const matchesSearch = !term || p.name.toLowerCase().includes(term);
+            return matchesCategory && matchesSearch;
+          });
+
+          if (filtered.length > 0) {
+            grid.innerHTML = filtered.map(productCardTemplate).join('');
+            grid.classList.remove('hidden');
+            noResults.classList.add('hidden');
+          } else {
+            grid.classList.add('hidden');
+            noResults.classList.remove('hidden');
+          }
+        };
+
+        searchInput.addEventListener('input', (event) => {
+          currentSearchTerm = event.target.value;
+          filterAndRender();
+        });
+        
+        filterAndRender(); // Initial render
+      };
+      
+      const orderNow = (productName) => {
+        const message = `مرحبًا، أرغب بطلب عطر ${productName}`;
+        const whatsappUrl = `https://wa.me/221774423572?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+      };
+
+      // --- ROUTER ---
+      const router = () => {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+
+        const path = window.location.hash.replace('#/', '') || '';
+        const [page, category = 'all'] = path.split('/');
+
+        if (page === 'products') {
+          renderProductsPage(category);
+        } else {
+          renderHomePage();
+        }
+        window.scrollTo(0, 0);
+      };
+
+      // --- EVENT LISTENERS ---
+      menuButton.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('hidden');
+        menuIcon.classList.toggle('fa-bars', isOpen);
+        menuIcon.classList.toggle('fa-times', !isOpen);
+      });
+
+      mainContent.addEventListener('click', (event) => {
+        const button = event.target.closest('.order-btn');
+        if (button && !button.disabled) {
+          orderNow(button.dataset.productName);
+        }
+      });
+
+      // --- INITIALIZATION ---
+      document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        window.addEventListener('hashchange', router);
+        router(); // Initial page load
+      });
+    })();
+  </script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
